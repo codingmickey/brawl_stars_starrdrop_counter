@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Drop Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Bangers', cursive;
+            background-color: #0f0f0f;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 48px;
+            color: #eee;
+            letter-spacing: 3px;
+            margin-bottom: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 240px;
+            /* Increased card width */
+            margin: 0 50px 20px;
+            transition: transform 0.3s ease-in-out;
+            background-color: #161616;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            /* Increased image size */
+            height: auto;
+            /* Increased image size */
+            margin-bottom: 10px;
+        }
+
+        .card img::after {
+            content: "";
+            position: absolute;
+            background: linear-gradient(0deg, rgba(39, 38, 42, 1) 0%, rgba(255, 255, 255, 0) 60%);
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+
+        .card p {
+            font-size: 3rem;
+            margin: 10px 0;
+            color: #fff;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            font-size: larger;
+        }
+
+        .minus {
+            padding: 0 19px;
+        }
+
+        .btn:hover {
+            background-color: #ff4f42;
+        }
+
+        #rare {
+            border: 3px solid green;
+            box-shadow: 0 0 20px green;
+        }
+
+        #rare .btn {
+            background-color: rgb(1, 168, 1);
+        }
+
+        #rare .btn:hover {
+            background-color: rgb(0, 112, 0);
+        }
+
+        #superRare {
+            border: 3px solid blue;
+            box-shadow: 0 0 20px blue;
+        }
+
+        #superRare .btn {
+            background-color: rgb(0, 0, 255);
+        }
+
+        #superRare .btn:hover {
+            background-color: rgb(0, 0, 168);
+        }
+
+        #epic {
+            border: 3px solid purple;
+            box-shadow: 0 0 20px purple;
+        }
+
+        #epic .btn {
+            background-color: rgb(128, 0, 128);
+        }
+
+        #epic .btn:hover {
+            background-color: rgb(84, 0, 84);
+        }
+
+        #mythic {
+            border: 3px solid red;
+            box-shadow: 0 0 20px red;
+        }
+
+        #mythic .btn {
+            background-color: rgb(255, 0, 0);
+        }
+
+        #mythic .btn:hover {
+            background-color: rgb(168, 0, 0);
+        }
+
+        #legendary {
+            border: 3px solid yellow;
+            box-shadow: 0 0 20px yellow;
+        }
+
+        #legendary .btn {
+            background-color: rgb(255, 255, 0);
+        }
+
+        #legendary .btn:hover {
+            background-color: rgb(168, 168, 0);
+        }
+
+
+        .logo-left,
+        .logo-right {
+            position: absolute;
+            top: 20px;
+        }
+
+        .logo-left {
+            left: 20px;
+            transform: rotate(-45deg);
+
+        }
+
+        .logo-right {
+            right: 20px;
+            transform: rotate(45deg);
+
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            aspect-ratio: unset;
+            /* Rotate by 45 degrees */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-left">
+        <img class="logo" src="./images/logo.png" alt="">
+    </div>
+    <div class="logo-right">
+        <img class="logo" src="./images/logo.png" alt="">
+
+    </div>
+
+    <h1>100x Star Drop Tracker</h1>
+    <h1>Kartik</h1>
+    <div class="container">
+        <div class="card" id="rare">
+            <img src="./images/rare_starr_drop.png" alt="Rare Image">
+            <p id="rareCountKartik">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCountKartik('rareKartik')">+</button>
+                <button class="btn minus" onclick="decrementCountKartik('rareKartik')">-</button>
+            </div>
+        </div>
+        <div class="card" id="superRare">
+            <img src="./images/super_rare_starr_drop.png" alt="Super Rare Image">
+            <p id="superRareCountKartik">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCountKartik('superRareKartik')">+</button>
+                <button class="btn minus" onclick="decrementCountKartik('superRareKartik')">-</button>
+            </div>
+        </div>
+        <div class="card" id="epic">
+            <img src="./images/epic_starr_drop.png" alt="Epic Image">
+            <p id="epicCountKartik">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCountKartik('epicKartik')">+</button>
+                <button class="btn minus" onclick="decrementCountKartik('epicKartik')">-</button>
+            </div>
+        </div>
+        <div class="card" id="mythic">
+            <img src="./images/mythic_starr_drop.png" alt="Mythic Image">
+            <p id="mythicCountKartik">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCountKartik('mythicKartik')">+</button>
+                <button class="btn minus" onclick="decrementCountKartik('mythicKartik')">-</button>
+            </div>
+        </div>
+        <div class="card" id="legendary">
+            <img src="./images/legendary_starr_drop.png" alt="Legendary Image">
+            <p id="legendaryCountKartik">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCountKartik('legendaryKartik')">+</button>
+                <button class="btn minus" onclick="decrementCountKartik('legendaryKartik')">-</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Duplicate section for "Daksh" -->
+    <h1>Daksh</h1>
+    <div class="container">
+        <div class="card" id="rare">
+            <img src="./images/rare_starr_drop.png" alt="Rare Image">
+            <p id="rareCount">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCount('rare')">+</button>
+                <button class="btn minus" onclick="decrementCount('rare')">-</button>
+            </div>
+        </div>
+        <div class="card" id="superRare">
+            <img src="./images/super_rare_starr_drop.png" alt="Super Rare Image">
+            <p id="superRareCount">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCount('superRare')">+</button>
+                <button class="btn minus" onclick="decrementCount('superRare')">-</button>
+            </div>
+        </div>
+        <div class="card" id="epic">
+            <img src="./images/epic_starr_drop.png" alt="Epic Image">
+            <p id="epicCount">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCount('epic')">+</button>
+                <button class="btn minus" onclick="decrementCount('epic')">-</button>
+            </div>
+        </div>
+        <div class="card" id="mythic">
+            <img src="./images/mythic_starr_drop.png" alt="Mythic Image">
+            <p id="mythicCount">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCount('mythic')">+</button>
+                <button class="btn minus" onclick="decrementCount('mythic')">-</button>
+            </div>
+        </div>
+        <div class="card" id="legendary">
+            <img src="./images/legendary_starr_drop.png" alt="Legendary Image">
+            <p id="legendaryCount">0</p>
+            <div class="btn-group">
+                <button class="btn" onclick="incrementCount('legendary')">+</button>
+                <button class="btn minus" onclick="decrementCount('legendary')">-</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        const rareCount = document.getElementById('rareCount');
+        const superRareCount = document.getElementById('superRareCount');
+        const epicCount = document.getElementById('epicCount');
+        const mythicCount = document.getElementById('mythicCount');
+        const legendaryCount = document.getElementById('legendaryCount');
+
+        let rareStars = 0;
+        let superRareStars = 0;
+        let epicStars = 0;
+        let mythicStars = 0;
+        let legendaryStars = 0;
+
+        function updateCount(category, increment) {
+            switch (category) {
+                case 'rare':
+                    rareStars += increment;
+                    rareCount.textContent = `${rareStars}`;
+                    break;
+                case 'superRare':
+                    superRareStars += increment;
+                    superRareCount.textContent = `${superRareStars}`;
+                    break;
+                case 'epic':
+                    epicStars += increment;
+                    epicCount.textContent = `${epicStars}`;
+                    break;
+                case 'mythic':
+                    mythicStars += increment;
+                    mythicCount.textContent = `${mythicStars}`;
+                    break;
+                case 'legendary':
+                    legendaryStars += increment;
+                    legendaryCount.textContent = `${legendaryStars}`;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        const rareCountKartik = document.getElementById('rareCountKartik');
+        const superRareCountKartik = document.getElementById('superRareCountKartik');
+        const epicCountKartik = document.getElementById('epicCountKartik');
+        const mythicCountKartik = document.getElementById('mythicCountKartik');
+        const legendaryCountKartik = document.getElementById('legendaryCountKartik');
+
+        let rareStarsKartik = 0;
+        let superRareStarsKartik = 0;
+        let epicStarsKartik = 0;
+        let mythicStarsKartik = 0;
+        let legendaryStarsKartik = 0;
+
+        function updateCountKartik(category, increment) {
+            switch (category) {
+                case 'rareKartik':
+                    rareStarsKartik += increment;
+                    rareCountKartik.textContent = `${rareStarsKartik}`;
+                    break;
+                case 'superRareKartik':
+                    superRareStarsKartik += increment;
+                    superRareCountKartik.textContent = `${superRareStarsKartik}`;
+                    break;
+                case 'epicKartik':
+                    epicStarsKartik += increment;
+                    epicCountKartik.textContent = `${epicStarsKartik}`;
+                    break;
+                case 'mythicKartik':
+                    mythicStarsKartik += increment;
+                    mythicCountKartik.textContent = `${mythicStarsKartik}`;
+                    break;
+                case 'legendaryKartik':
+                    legendaryStarsKartik += increment;
+                    legendaryCountKartik.textContent = `${legendaryStarsKartik}`;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function incrementCount(category) {
+            updateCount(category, 1);
+        }
+
+        function decrementCount(category) {
+            if (category === 'rare' && rareStars === 0) return;
+            if (category === 'superRare' && superRareStars === 0) return;
+            if (category === 'epic' && epicStars === 0) return;
+            if (category === 'mythic' && mythicStars === 0) return;
+            if (category === 'legendary' && legendaryStars === 0) return;
+
+            updateCount(category, -1);
+        }
+
+        function incrementCountKartik(category) {
+            updateCountKartik(category, 1);
+        }
+
+        function decrementCountKartik(category) {
+            if (category === 'rareKartik' && rareStarsKartik === 0) return;
+            if (category === 'superRareKartik' && superRareStarsKartik === 0) return;
+            if (category === 'epicKartik' && epicStarsKartik === 0) return;
+            if (category === 'mythicKartik' && mythicStarsKartik === 0) return;
+            if (category === 'legendaryKartik' && legendaryStarsKartik === 0) return;
+
+            updateCountKartik(category, -1);
+        }
+    </script>
+</body>
+
+</html>
