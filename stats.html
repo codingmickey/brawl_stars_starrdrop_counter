@@ -450,9 +450,6 @@
             updateCountKartik(category, -1);
         }
 
-        <!-- Add such onbeforeunload only if there have been any changes in the counts -->
-
-
         window.onbeforeunload = function () {
             return "Are you sure you want to leave? You're stats will be lost";
         };
