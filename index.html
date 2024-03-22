@@ -19,11 +19,12 @@
 
         h1 {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
             font-size: 48px;
             color: #eee;
             letter-spacing: 3px;
             margin-bottom: 0;
+            position: relative;
         }
 
         .container {
@@ -39,7 +40,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 240px;
             /* Increased card width */
-            margin: 0 50px 20px;
+            margin: 0 20px 20px;
             transition: transform 0.3s ease-in-out;
             background-color: #161616;
         }
@@ -53,7 +54,6 @@
             /* Increased image size */
             height: auto;
             /* Increased image size */
-            margin-bottom: 10px;
         }
 
         .card img::after {
@@ -70,7 +70,7 @@
 
         .card p {
             font-size: 3rem;
-            margin: 10px 0;
+            margin: 3px 0;
             color: #fff;
         }
 
@@ -185,14 +185,15 @@
 
         .logo {
             width: 150px;
-            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 24px;
             font-weight: bold;
-            aspect-ratio: unset;
+            /* Add some transparency */
+            opacity: 0.2;
             /* Rotate by 45 degrees */
+            z-index: -99999;
         }
     </style>
 </head>
