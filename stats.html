@@ -208,7 +208,7 @@
     </div>
 
     <h1>100x Star Drop Tracker</h1>
-    <h1>Kartik</h1>
+    <h1 id="player1">Kartik</h1>
     <div class="container">
         <div class="card" id="rare">
             <img src="./images/rare_starr_drop.png" alt="Rare Image">
@@ -253,7 +253,7 @@
     </div>
 
     <!-- Duplicate section for "Daksh" -->
-    <h1>Daksh</h1>
+    <h1 id="player2">Daksh</h1>
     <div class="container">
         <div class="card" id="rare">
             <img src="./images/rare_starr_drop.png" alt="Rare Image">
@@ -310,6 +310,22 @@
         let epicStars = 0;
         let mythicStars = 0;
         let legendaryStars = 0;
+
+        const player1 = document.getElementById('player1');
+        const player2 = document.getElementById('player2');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const player1Name = urlParams.get('player1');
+        const player2Name = urlParams.get('player2');
+
+        console.log(player1Name, player2Name);
+
+        player1.textContent = player1Name;
+        player2.textContent = player2Name;
+
+        if (!player2Name) {
+            player2.nextElementSibling.style.display = 'none';
+        }
 
         function updateCount(category, increment) {
             switch (category) {
