@@ -19,6 +19,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            flex-direction: column;
         }
 
         .container {
@@ -92,12 +93,34 @@
         .form-group {
             margin-bottom: 20px;
         }
+
+        .branding {
+            margin-top: 30px;
+            font-size: larger;
+            color: #888;
+            text-align: center;
+        }
+
+        .branding a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .branding a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .branding span {
+            color: #ff6f61;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>StarR Drop Tracker</h1>
+        <h1>100 StarR Drop Tracker</h1>
         <form id="startForm">
             <div class="form-group">
                 <label for="player1Name">Player 1 Name:</label>
@@ -117,9 +140,16 @@
                 <label class="radio-label" for="numPlayers2">2</label>
             </div>
 
-            <button type="submit">Start Game</button>
+            <button type="submit">Track Starr drops</button>
         </form>
+
     </div>
+
+    <div class="branding">
+        <p>Made with ❤️ by <span> Kartik</span></p>
+        <p>Find me on <a href="https://twitter.com/codingmickey" target="_blank">Twitter @ codingmickey</a></p>
+    </div>
+
 
 
     <script>
