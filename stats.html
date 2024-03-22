@@ -322,7 +322,7 @@
 
     <div class="branding">
         <p>Made with ❤️ by <span> Kartik</span></p>
-        <p>Find me on <a href="https://twitter.com/YourTwitterHandle" target="_blank">Twitter</a></p>
+        <p>Find me on <a href="https://twitter.com/codingmickey" target="_blank">Twitter</a></p>
     </div>
 
 
@@ -449,6 +449,15 @@
 
             updateCountKartik(category, -1);
         }
+
+        <!-- Add such onbeforeunload only if there have been any changes in the counts -->
+
+
+        window.onbeforeunload = function () {
+            return "Are you sure you want to leave? You're stats will be lost";
+        };
+
+
     </script>
 </body>
 
